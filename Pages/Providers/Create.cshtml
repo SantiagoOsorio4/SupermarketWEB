@@ -1,0 +1,42 @@
+﻿@page
+@model SupermarketWEB.Pages.Providers.IndexModel
+@{
+    var message = ViewData["Message"]?.ToString();
+}
+<h1>Create New Provider</h1>
+
+<h4>Provider</h4>
+@if (string.IsNullOrWhiteSpace(message))
+{
+    <div class="alert alert-success" role="alert">
+        @message
+    </div>
+}
+
+<hr />
+<div>
+    <div class="mb-3">
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input asp-for="Provider.FirstName" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input asp-for="Provider.Email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PhoneNumber</label>
+                <input asp-for="Provider.PhoneNumber" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Company</label>
+                <input asp-for="Provider.Company" class="form-control" />
+            </div>
+            <div class="mb-3">
+               <button type="submit" class="btn btn-success">Crear</button>
+            </div>
+        </form>
+    </div>
+</div>
+

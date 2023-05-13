@@ -17,6 +17,7 @@ namespace SupermarketWEB.Pages.Categories
         {
             return Page();
         }
+
         [BindProperty]
         public Category Category { get; set; } = default!;
 
