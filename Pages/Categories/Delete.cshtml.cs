@@ -5,6 +5,7 @@ using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 using System.Security.Cryptography;
 
+
 namespace SupermarketWEB.Pages.Categories
 {
     public class DeleteModel : PageModel

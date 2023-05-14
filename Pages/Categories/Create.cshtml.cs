@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SupermarketWEB.Pages.Categories
 {
