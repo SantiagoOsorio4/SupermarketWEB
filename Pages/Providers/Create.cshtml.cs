@@ -6,34 +6,27 @@ using SupermarketWEB.Models;
 
 namespace SupermarketWEB.Pages.Providers
 {
-    public class IndexModel : PageModel
+    public class CreateModel : PageModel
     {
-        private readonly SupermarketContext context;
-        public IndexModel(SupermarketContext context)
+        private readonly SupermarketContext _context;
+        public CreateModel(SupermarketContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
-
         [BindProperty]
-        public Provider Provider { get; set; }
+        public Provider Provider { get; set; } = default!;
 
-
-
-        public void OnPost() 
+        public async Task<IActionResult> OnPostAsync()
         {
-            var providerDomainModel = new Provider
+            if (!ModelState.IsValid || _context.Providers == null || Provider == null)
             {
-                FirstName = Provider.FirstName,
-                Email = Provider.Email,
-                PhoneNumber = Provider.PhoneNumber,
-                Company = Provider.Company,
+                return Page();
+            }
+            _context.Providers.Add(Provider);
+            await _context.SaveChangesAsync();
 
-            };
-            context.Providers.Add(providerDomainModel);
-            context.SaveChanges();
-
-            ViewData["Message"] = "Creado con Extito";
+            return RedirectToPage("./index");
         }
     }
 }

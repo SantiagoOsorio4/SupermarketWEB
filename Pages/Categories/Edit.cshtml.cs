@@ -9,10 +9,12 @@ namespace SupermarketWEB.Pages.Categories
     public class EditModel : PageModel
     {
         private readonly SupermarketContext _context;
+
         public EditModel(SupermarketContext context)
         {
             _context = context;
         }
+
         [BindProperty]
         public Category Category { get; set; } = default!;
 
@@ -22,9 +24,10 @@ namespace SupermarketWEB.Pages.Categories
             {
                 return NotFound();
             }
-            var category = await _context.Categories.FirstOrDefaultAsync(mbox => mbox.Id == id);
-            if (category == null) 
-            { 
+
+            var category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
+            {
                 return NotFound();
             }
             Category = category;
@@ -35,7 +38,7 @@ namespace SupermarketWEB.Pages.Categories
         {
             if (!ModelState.IsValid)
             {
-                return NotFound();
+                return Page();
             }
 
             _context.Attach(Category).State = EntityState.Modified;
@@ -46,23 +49,23 @@ namespace SupermarketWEB.Pages.Categories
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(Category.Id ))
+                if (!CategoryExists(Category.Id))
                 {
-                    if (!CategoryExists(Category.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return NotFound();
                 }
+                else
+                {
+                    throw;
+                }
+
             }
-            return RedirectToPage("./Index");
+
+            return RedirectToPage("./index");
         }
+
         private bool CategoryExists(int id)
         {
-            return (_context.Categories?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Categories?.Any(c => c.Id == id)).GetValueOrDefault();
         }
     }
 }

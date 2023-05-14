@@ -13,10 +13,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.Categories[0].Name)
             </th>
-            <ht>
+            <th>
                 @Html.DisplayNameFor(model => model.Categories[0].Description)
-            </ht>
-
+            </th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -30,10 +30,11 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                   <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                   <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+

@@ -13,6 +13,6 @@ namespace SupermarketWEB.Models
         public string Email { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
-        public string Company { get; set; }
+        public string Company { get; set; } 
     }
 }
