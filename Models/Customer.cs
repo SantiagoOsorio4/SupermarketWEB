@@ -13,6 +13,7 @@ namespace FirstWebApp.Models
         public string? Address { get; set; }
         public DateTime Birthday { get; set; }
         public string? PhoneNumber { get; set; }
+        [EmailAddress]
         public string? Email { get; set; }
     }
 }
