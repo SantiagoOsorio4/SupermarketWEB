@@ -7,9 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<SupermarketContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB"))
-);
+builder.Services.AddAuthentication().AddCookie("MyCookieAuth", option => {
+
+    option.Cookie.Name = "MyCookieAuth";
+    option.LoginPath = "/Account/Login";
+
+});
+
+
+
+builder.Services.AddDbContext<SupermarketContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB")));
 
 var app = builder.Build();
 
